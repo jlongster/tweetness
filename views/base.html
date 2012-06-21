@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title></title>
+    <title>Tweetness</title>
     <meta name="description" content="">
 
     <!-- Mobile viewport optimized: h5bp.com/viewport -->
@@ -14,7 +14,7 @@
     <!-- If using Twitter Bootstrap, uncomment these lines
          (also see javascript at the bottom of this file) -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-responsive.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap-responsive.css"> -->
 
     <link rel="stylesheet" href="css/app.css">
     
@@ -26,22 +26,9 @@
     <script src="js/lib/modernizr-2.5.3.min.js"></script>
   </head>
   <body>
-
-    <!-- Add your site or application content here -->
-
-    <section class="view">
-      <header>
-        <div>Search:</div>
-        <input type="text" name="value" />
-        <button id="go">Go</button>
-      </header>
-      <section>
-        <ul id="#tweets">
-        </ul>
-      </section>
-      <footer></footer>
-    </section>
-
+    
+    {{html body}}
+    
     <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
     <!-- Using require.js, a module system for javascript, include the
@@ -51,20 +38,6 @@
     <script type="text/javascript"
             data-main="js/app.js"
             src="js/lib/require.js"></script>
-
-    <!-- If you don't want to use require.js, just delete the above
-         tag (and this) and uncomment the following script blocks. -->
-
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back
-         to local if offline. -->
-    <!--
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/lib/jquery.js"><\/script>')</script>
-    -->
-
-    <!-- Include the in-app payments API
-         https://developer.mozilla.org/en/Apps/In-app_payments -->
-    <!-- <script src="//marketplace-cdn.addons.mozilla.net/mozmarket.js"></script> -->
 
     <!-- If using Twitter Bootstrap and not require.js, include the js.
          If you are using require.js, see js/lib/app.js -->

@@ -1,0 +1,18 @@
+{{layout "base"}}
+
+<section class="view">
+  <header>
+    <div><a href="/logout">Logout</a></div>
+    <div>Tweet Something:</div>
+    <input type="text" name="tweet" />
+    <button id="go">Go</button>
+  </header>
+  <section>
+    <ul id="#tweets">
+      {{each(i, tweet) tweets}}
+      <li><strong>${tweet.user.name}</strong> ${tweet.text}</li>
+      {{/each}}
+    </ul>
+  </section>
+  <!-- <footer></footer> -->
+</section>

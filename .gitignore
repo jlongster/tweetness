@@ -43,3 +43,5 @@ build/config/buildinfo.properties
 
 www-built
 www-ghpages
+
+config.js

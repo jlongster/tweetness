@@ -260,15 +260,20 @@ header div {
     vertical-align: middle;
 }
 
+header a, header a:visited, header a:active {
+    color: yellow;
+}
+
 header input[type=text] {
     display: block;
     -moz-box-flex: 4;
     -webkit-box-flex: 4;
     
     padding: 6px 10px;
+    margin-top: 8px;
     border-radius: 15px;
     border: 0;
-    font-size: .75em;
+    font-size: 1em;
     height: auto;
 }
 
@@ -276,6 +281,7 @@ header button {
     border: 0;
     border-radius: 15px;
     font-size: 1em;
+    padding: 4px 10px;
     margin-left: .5em;
     margin-right: .5em;
 }
@@ -309,6 +315,21 @@ section ul li:hover {
     cursor: pointer;
 }
 
+.notification {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+
+    background-color: yellow;
+    text-align: center;
+}
+
+.welcome {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 10em;
+}
 
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.

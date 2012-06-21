@@ -1,19 +1,4 @@
 
-// The code below uses require.js, a module system for javscript:
-// http://requirejs.org/docs/api.html#define
-//
-// You don't have to use require.js, and you can delete all of this if
-// you aren't (make sure to uncomment the script tags in index.html also)
-
-
-// Set the path to jQuery, which will fall back to the local version
-// if google is down
-require.config({
-    paths: {'jquery':
-            ['//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min',
-             'lib/jquery']}
-});
-
 var global = this;
 
 // Include the in-app payments API, and if it fails to load handle it
@@ -29,18 +14,65 @@ require(['https://marketplace-cdn.addons.mozilla.net/mozmarket.js'],
         });
 
 
-require(['jquery'], function($) {
-    // If using Twitter Bootstrap, you need to require all the
-    // components that you use, like so:
-    // require('bootstrap/dropdown');
-    // require('bootstrap/alert');
+require(['lib/zepto'], function($) {
+    var tweetbox = $("header input[name=tweet]");
 
-    // Put your js code here
+    function notify(msg) {
+        if(msg) {
+            var note = $('.notification');
+            if(note.length) {
+                note.html(msg);
+            }
+            else {
+                $('body').append('<div class="notification">' + msg + '</div>');
+            }
+        }
+        else {
+            $('.notification').remove();
+        }
+    }
 
+    function update_tweets() {
+        $.getJSON('/timeline', function(data) {
+            var lst = $('section ul');
+            lst.empty();
 
+            for(var i=0; i<data.length; i++) {
+                var tweet = data[i];
+                lst.append('<li>' +
+                           '<strong>' + tweet.user.name + '</strong> ' +
+                           tweet.text +
+                           '</li>');
+            }
 
+            notify(null);
+        });
+    }
 
+    function submit_tweet(tweet) {
+        notify("Posting tweet...");
+        $.post('/update', { msg: tweet }, function(r) {
+            tweetbox.val('');
+            notify(null);
+
+            // Give twitter 2 seconds to update
+            setTimeout(function() {
+                notify("Updating tweets...");
+                update_tweets();
+            }, 4000);
+        }, function() {
+            alert('error sending tweet');
+        });
+    }
+
+    tweetbox.keydown(function(e) {
+        // enter
+        if(e.keyCode == 13) {
+            submit_tweet(tweetbox.val());
+        }
+    });
+
+    $('#go').click(function() {
+        submit_tweet(tweetbox.val());
+    });
 });
-
-// END REQUIRE.JS CODE
-// Remove all of this if not using require.js

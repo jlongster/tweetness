@@ -1,2 +1,0 @@
-
-xtag.register('view', {});
