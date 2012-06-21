@@ -189,4 +189,4 @@ app.post("/update", function(req, res) {
     });
 });
 
-app.listen(4000);
+app.listen(config.port);
