@@ -80,12 +80,12 @@ function getTimeline(accessToken, k) {
 // pages
 
 app.get("/", function(req, res) {
-    // if(req.cookies.accesstoken) {
-    //     res.redirect("/app");
-    // }
-    // else {
+    if(req.cookies.accesstoken) {
+        res.redirect("/app");
+    }
+    else {
         res.render("index.html");
-//}
+    }
 });
 
 app.get("/authorize", function(req, res) {
